@@ -11,8 +11,8 @@
             </ul>
             <div class="button-wrp">
 
-                <button :id="item.id" @click="checkItem()">checks</button>
-                <button>deleteItem</button>
+                <button :id="item.id" @click="checkItem()">check</button>
+                <button>delete</button>
                 <button>edit</button>
                 <button>{{changest}}</button>
             </div>
