@@ -1,18 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header :sendCounter="this.counter"  @plitka="plitka" @line="line" @popup="showPoup" />
+    <TodoItem @checkPlus="counter++" :changest="changeStyle" />
+    <transition name="fade">
+      <PopUp @close='closePopup' v-if="show" />
+    </transition>
+
   </div>
-</template>
+</template> 
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import '../public/styles/style.css'
+import Header from './components/Header.vue';
+import TodoItem from './components/TodoItem.vue';
+import PopUp from './components/PopUp.vue';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Header,
+    TodoItem,
+    PopUp
+  },
+  data() {
+    return {
+      counter: 0,
+      show: false,
+      changeStyle: false,
+    }
+  },
+  methods: {
+    showPoup() {
+      this.show = true
+    },
+    closePopup() {
+      this.show = false
+    },
+    plitka() {
+      this.changeStyle = false;
+      console.log(('plitka'));
+    },
+    line() {
+      this.changeStyle = true;
+      console.log(('line'));
+    }
   }
+
 }
 </script>
 
@@ -22,7 +55,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
 }
 </style>
